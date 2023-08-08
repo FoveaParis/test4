@@ -1,0 +1,81 @@
+# Welcome {-}
+
+```{r "intro"}
+#| echo: false
+.gh_url <- file.path('https://github.com', rmarkdown::metadata[['github-repo']])
+intro <- rebook::openingDetails(Source=.gh_url)
+pkg <- readLines("DESCRIPTION") |> 
+    grep("Package: ", x = _, value = TRUE) |> 
+    gsub("Package: ", "", x = _)
+intro <- glue::glue("**Package:** {pkg}<br/>\n {intro}")
+```
+
+This is the landing page of the `BiocBook` entitled *...*.  
+
+This book introduces the reader to *...*.  
+
+`r intro`
+
+# Docker image {-}
+
+A `Docker` image built from this repository is available here: 
+
+👉 [ghcr.io/<github_user>/<package_name>](https://ghcr.io/<github_user>/<package_name>) 🐳
+
+::: {.callout-tip icon='true'}
+## Get started now 🎉
+
+You can get access to all the packages used in this book in < 1 minute, 
+using this command in a terminal: 
+
+```{sh "docker", filename="bash"}
+#| eval: false
+docker run -it ghcr.io/<github_user>/<package_name>:devel R
+```
+
+:::
+
+# RStudio Server {-}
+
+An RStudio Server instance can be initiated from the `Docker` image as follows: 
+
+```{sh "rstudio", filename="bash"}
+#| eval: false
+docker run \
+    --volume <local_folder>:<destination_folder> \
+    -e PASSWORD=OHCA \
+    -p 8787:8787 \
+    ghcr.io/<github_user>/<package_name>:devel
+```
+
+The initiated RStudio Server instance will be available at 
+[https://localhost:8787](https://localhost:8787).
+
+# Reproducibility {-}
+
+This `BiocBook` has been written using the 
+[`BiocBook` package](https://github.com/js2264/BiocBook) (@serizay2023), 
+and also relies on other packages, including (but not only): 
+
+- `quarto` (@Allaire_Quarto_2022)
+- `devtools` (@Wickham2022)
+- `rebook` (@lun2023)
+
+To build this book locally, you can run: 
+
+```{sh "reproducibility", filename="bash"}
+#| eval: false
+git clone git@github.com:<github_user>/<Package_name>.git && cd <github_user>/<Package_name>
+Rscript -e 'remotes::install_local(".", force = TRUE)'
+quarto render
+```
+
+# Session info {-}
+
+```{r "session info", filename="R"}
+#| cache: false
+sessioninfo::session_info(
+    installed.packages()[,"Package"], 
+    include_base = TRUE
+)
+```

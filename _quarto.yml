@@ -1,0 +1,9 @@
+project:
+  type: book
+  output-dir: docs
+
+metadata-files:
+  - inst/assets/_book.yml
+  - inst/assets/_website.yml
+  - inst/assets/_format.yml
+  - inst/assets/_knitr.yml
