@@ -20,7 +20,7 @@ This book introduces the reader to *...*.
 
 A `Docker` image built from this repository is available here: 
 
-👉 [ghcr.io/<github_user>/<package_name>](https://ghcr.io/<github_user>/<package_name>) 🐳
+👉 [ghcr.io/FoveaParis/test4](https://ghcr.io/FoveaParis/test4) 🐳
 
 ::: {.callout-tip icon='true'}
 ## Get started now 🎉
@@ -30,7 +30,7 @@ using this command in a terminal:
 
 ```{sh "docker", filename="bash"}
 #| eval: false
-docker run -it ghcr.io/<github_user>/<package_name>:devel R
+docker run -it ghcr.io/FoveaParis/test4:devel R
 ```
 
 :::
@@ -45,7 +45,7 @@ docker run \
     --volume <local_folder>:<destination_folder> \
     -e PASSWORD=OHCA \
     -p 8787:8787 \
-    ghcr.io/<github_user>/<package_name>:devel
+    ghcr.io/FoveaParis/test4:devel
 ```
 
 The initiated RStudio Server instance will be available at 
@@ -65,7 +65,7 @@ To build this book locally, you can run:
 
 ```{sh "reproducibility", filename="bash"}
 #| eval: false
-git clone git@github.com:<github_user>/<Package_name>.git && cd <github_user>/<Package_name>
+git clone git@github.com:FoveaParis/test4.git && cd FoveaParis/test4
 Rscript -e 'remotes::install_local(".", force = TRUE)'
 quarto render
 ```
